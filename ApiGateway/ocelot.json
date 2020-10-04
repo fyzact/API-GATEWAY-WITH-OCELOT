@@ -1,0 +1,38 @@
+{
+    "Routes": [
+        {
+        "DownstreamPathTemplate": "/api/bar",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+            {
+                "Host": "localhost",
+                "Port": 5002
+            }
+        ],
+        "UpstreamPathTemplate": "/bar",
+        "UpstreamHttpMethod": [ "Get" ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/foo",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5001
+                }
+            ],
+            "UpstreamPathTemplate": "/foo",
+            "UpstreamHttpMethod": [ "Get" ],
+            "RateLimitOptions": {
+                "ClientWhitelist": [],
+                "EnableRateLimiting": true,
+                "Period": "1m",
+                "PeriodTimespan": 10,
+                "Limit": 10
+            }
+            }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "https://localhost:5000"
+    }
+}
